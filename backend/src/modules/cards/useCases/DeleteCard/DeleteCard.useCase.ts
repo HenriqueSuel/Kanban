@@ -11,7 +11,7 @@ export class DeleteCardUseCase {
 
         const findCardById = await cardRepository.findById(id);
 
-        if (!findCardById) throw NotFound('Id não encontrado')
+        if (!findCardById) throw NotFound('Id não encontrado');
 
         await cardRepository.delete(id);
 

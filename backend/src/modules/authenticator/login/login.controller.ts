@@ -9,7 +9,6 @@ export class LoginController {
 
         const token = await loginUseCase.handle({ login, senha });
 
-        console.log(token)
         return response.json(token);
 
     }

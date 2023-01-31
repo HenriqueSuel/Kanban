@@ -1,8 +1,12 @@
+import 'express-async-errors';
 import express, { NextFunction, Request, Response } from 'express';
 import sequelize from './db/config';
 import cors from 'cors';
 import { IError } from './interfaces/error.interface';
 import { routers } from './routes';
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 const PORT = process.env.PORT || 5000
 
