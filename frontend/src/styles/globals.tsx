@@ -4,6 +4,7 @@ import styled, { createGlobalStyle } from "styled-components";
 
 
 export const GlobalStyle = createGlobalStyle`
+
 html{
   box-sizing: border-box;
   background: #33658A;
