@@ -1,10 +1,10 @@
 import { Router } from "express";
+import { CreateCardController } from "../useCases/createCard/CreateCard.controller";
 
 const cardRoutes = Router();
 
+const createCardController = new CreateCardController();
 
-cardRoutes.get('/', (res, resp) => {
-    resp.json('OK')
-});
+cardRoutes.post('/', createCardController.handle);
 
 export { cardRoutes };
