@@ -1,18 +1,28 @@
 import { GlobalStyle, theme } from '@/styles/globals'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components';
-import Modal from 'react-modal';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 export default function App({ Component, pageProps }: AppProps) {
-
-  Modal.setAppElement('#app');
 
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
-
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </ThemeProvider>
     </>
   )

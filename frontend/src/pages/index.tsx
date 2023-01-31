@@ -1,6 +1,9 @@
 import { Board } from '@/components/Board'
 import { NavBar } from '@/components/NavBar'
 import Head from 'next/head'
+import Modal from 'react-modal';
+
+Modal.setAppElement('#app');
 
 export default function Home() {
   return (
