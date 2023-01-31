@@ -13,7 +13,7 @@ export const Title = styled.p`
 `
 
 export const Column = styled.div`
-     background-color:#2F4858;
+    background-color:#2F4858;
     border-radius: 10px;
     margin-right: 10px;
 

@@ -1,7 +1,11 @@
+import { COLORS } from "@/constants/theme.constants";
 import { ICard } from "@/interfaces/card.interface";
 import { useCardsStore } from "@/stores/cards.zustand";
+import { Button } from "@/styles/globals";
 import { useForm } from "react-hook-form";
 import * as S from './styles';
+import Markdown from 'marked-react';
+
 interface IProps extends Partial<ICard> {
     onComplete: () => void;
 }
@@ -24,6 +28,8 @@ const FormCard = ({ id, onComplete, title, content, lista }: IProps) => {
                 <label htmlFor="title" >Titulo</label>
                 <S.Input id='title' defaultValue={title} {...register("title")} />
 
+                <Markdown value={title}  />
+
             </S.FormGroup>
             <S.FormGroup>
                 <label htmlFor="content" >Content</label>
@@ -41,9 +47,12 @@ const FormCard = ({ id, onComplete, title, content, lista }: IProps) => {
 
             </S.FormGroup>
 
-            <S.Button type="submit">
-                Salvar
-            </S.Button>
+            <S.Container>
+                <Button type="submit" color={COLORS.SUCCESS}>
+                    Salvar
+                </Button>
+
+            </S.Container>
 
         </form>
     )

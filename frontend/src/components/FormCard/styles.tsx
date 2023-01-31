@@ -15,6 +15,7 @@ export const TextArea = styled.textarea`
     border: 1px solid #ccc; 
     padding: 7px 14px 9px; 
     margin-top:10px;
+    font-family:Verdana;
 `
 
 export const FormGroup = styled.div`
@@ -23,17 +24,11 @@ export const FormGroup = styled.div`
     margin-top: 20px;   
 `
 
-export const Button = styled.button`
+export const Container = styled.div`
     margin-top: 20px;
-    padding: 8px 24px;
-    color: #fff;
-    font-weight: 700;
-    background-color: #2ea44f;
-    border: none;
-    border-radius: 6px;
-    box-shadow: none;
-    cursor: pointer;
-    width: 100%;
-    text-align: center;
+    button {
+        padding: 8px 24px;
+        width: 100%;
+    }
     
 `
