@@ -18,7 +18,8 @@ export class CardRepository {
     }
 
     async create({ title, content, lista, id }: ICardProps) {
-        return CardInstance.create({ title, content, lista, id });
+        const card = await CardInstance.create({ title, content, lista, id });
+        return card.toJSON();
     }
 
     async update({ title, content, lista, id }: ICardProps) {

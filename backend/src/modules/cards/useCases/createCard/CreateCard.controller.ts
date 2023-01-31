@@ -14,6 +14,6 @@ export class CreateCardController {
 
         const card = await createCardUseCase.handle({ title, content, lista });
 
-        return response.json(card);
+        return response.status(201).json(card);
     }
 }
