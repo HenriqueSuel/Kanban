@@ -1,28 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Kanban Back end</h1>
 
-## Getting Started
+## Descrição do Projeto
+<p align="center">Kanban Front end</p>
 
-First, run the development server:
+### Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+
+
+### 🎲 Instalação
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+# Clone este repositório
+$ git clone <https://github.com/HenriqueSuel/Kanban>
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd kanban
+
+# Vá para a pasta backend
+$ cd frontend
+
+# Instale as dependências
+$ yarn install
+
+# Execute a aplicação em modo de desenvolvimento
+$ yarn dev
+
+# O site inciará na porta:3000 - acesse <http://localhost:3000>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🛠 Tecnologias
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+As seguintes ferramentas foram usadas na construção do projeto:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- [NextJS](https://nextjs.org/docs)
+- [Jest](https://jestjs.io/pt-BR/)
+- [TypeScript](https://www.typescriptlang.org/)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Preview
 
-## Learn More
 
 To learn more about Next.js, take a look at the following resources:
 
