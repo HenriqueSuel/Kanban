@@ -2,8 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display:grid;
-    margin: 30px 10rem;
+    margin: 10px 10px;
     grid-template-columns: repeat(3, 2fr);
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+  }
 `
 
 export const Title = styled.p`

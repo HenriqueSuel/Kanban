@@ -15,7 +15,7 @@ export class LoginUseCase {
 
         const token = sign({ login }, JWT_SECRET as string, {
             subject: login,
-            expiresIn: '1d',
+            expiresIn: '10d',
         });
 
         return { token };

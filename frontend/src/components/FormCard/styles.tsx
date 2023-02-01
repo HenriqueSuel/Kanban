@@ -26,6 +26,7 @@ export const FormGroup = styled.div`
 
 export const Container = styled.div`
     margin-top: 20px;
+    margin-bottom: 20px;
     button {
         margin-top: 10px;
         padding: 8px 24px;
