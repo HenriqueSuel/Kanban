@@ -4,21 +4,22 @@ import { useCardsStore } from "@/stores/cards.zustand";
 import { Button } from "@/styles/globals";
 import { useForm } from "react-hook-form";
 import * as S from './styles';
-import Markdown from 'marked-react';
+import * as DOMPurify from 'dompurify';
 
 interface IProps extends Partial<ICard> {
     onComplete: () => void;
+    onCancel?: () => void;
 }
 
-const FormCard = ({ id, onComplete, title, content, lista }: IProps) => {
+const FormCard = ({ id, onComplete, title, content, lista, onCancel }: IProps) => {
     const { createCard, editCard } = useCardsStore();
     const { register, handleSubmit, formState: { errors } } = useForm<ICard>();
 
     const onSubmit = handleSubmit(async (data: ICard) => {
-        id ? await editCard({ ...data, id }) : await createCard(data);
+        let content = DOMPurify.sanitize(data.content);
+        id ? await editCard({ ...data, id, content }) : await createCard({ ...data, content });
         onComplete();
     });
-
 
 
     return (
@@ -27,8 +28,6 @@ const FormCard = ({ id, onComplete, title, content, lista }: IProps) => {
             <S.FormGroup>
                 <label htmlFor="title" >Titulo</label>
                 <S.Input id='title' defaultValue={title} {...register("title")} />
-
-                <Markdown value={title}  />
 
             </S.FormGroup>
             <S.FormGroup>
@@ -51,7 +50,12 @@ const FormCard = ({ id, onComplete, title, content, lista }: IProps) => {
                 <Button type="submit" color={COLORS.SUCCESS}>
                     Salvar
                 </Button>
+                {id && (
+                    <Button type="button" color={COLORS.ERROR} onClick={onCancel}>
+                        Cancelar
+                    </Button>
 
+                )}
             </S.Container>
 
         </form>

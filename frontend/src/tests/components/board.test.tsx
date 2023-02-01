@@ -7,7 +7,7 @@ Modal.setAppElement('body')
 
 const findCards = jest.fn();
 const deleteCard = jest.fn();
-
+const editCard = jest.fn();
 
 jest.mock('@/stores/cards.zustand', () => {
     return {
@@ -18,7 +18,8 @@ jest.mock('@/stores/cards.zustand', () => {
                 { id: '3', title: 'Card 3', content: 'Content 3', lista: 'done' },
             ],
             findCards,
-            deleteCard
+            deleteCard,
+            editCard,
         })),
     };
 });
@@ -58,5 +59,22 @@ describe('Board component', () => {
 
         const modal = await screen.findByTestId('formCard')
         expect(modal).toBeInTheDocument();
+    });
+
+    it('should call findCards and deleteCard when clicking delete card', async () => {
+        render( <Board />);
+
+        const editarButton = screen.getAllByTestId('FaArrowLeft');
+        fireEvent.click(editarButton[1]);
+
+        expect(editCard).toHaveBeenCalled();
+    });
+    it('should call findCards and deleteCard when clicking delete card', async () => {
+        render( <Board />);
+
+        const editarButton = screen.getAllByTestId('FaArrowRight');
+        fireEvent.click(editarButton[1]);
+
+        expect(editCard).toHaveBeenCalled();
     });
 });

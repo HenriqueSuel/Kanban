@@ -10,7 +10,6 @@ jest.mock('@/stores/cards.zustand', () => {
     return {
         useCardsStore: jest.fn(() => ({
             createCard,
-            onComplete
         })),
     };
 });

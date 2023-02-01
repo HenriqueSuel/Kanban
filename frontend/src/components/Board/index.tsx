@@ -1,30 +1,22 @@
 import { MODAL_STYLES } from '@/constants/modal.constants';
+import { KANBAN_STATUS } from '@/constants/status.constants';
 import { ICard } from '@/interfaces/card.interface';
 import { useCardsStore } from '@/stores/cards.zustand';
-import { useCallback, useEffect, useState } from 'react';
-import Modal from 'react-modal';
+import { useCallback, useEffect } from 'react';
 import { Card } from '../Card';
-import { FormCard } from '../FormCard';
 import * as S from './styles';
 
 const Board = () => {
-    const [selectedCard, setSelectedCard] = useState<ICard | null>();
+    const { findCards, cards, deleteCard, editCard } = useCardsStore();
 
-    const [modalIsOpen, setIsOpen] = useState(false);
-
-    const { findCards, cards, deleteCard } = useCardsStore();
-
-
-    const closeModal = async () => {
+    const handleChangeStatusCard = useCallback(async (card: ICard) => {
+        await editCard(card);
         await findCards();
-        setIsOpen(false);
-        setSelectedCard(null)
-    }
+    }, [editCard, findCards]);
 
-    const handleEditCard = useCallback((card: ICard) => {
-        setSelectedCard(card);
-        setIsOpen(true);
-    }, []);
+    const handleCompleteEdit = useCallback(async () => {
+        await findCards();
+    }, [findCards]);
 
     const handleDeleteCard = useCallback(async (id: string) => {
         await deleteCard(id);
@@ -40,32 +32,37 @@ const Board = () => {
             <S.Column>
                 <S.Title>To Do</S.Title>
                 {cards.filter(card => card.lista === 'todo').map(card => (
-                    <Card key={card.id} {...card} handleClick={() => handleEditCard(card)} handleDelete={() => handleDeleteCard(card.id)} />
+                    <Card
+                        key={card.id}
+                        {...card}
+                        handleCompleteEdit={handleCompleteEdit}
+                        handleArrowRight={() => handleChangeStatusCard({ ...card, lista: KANBAN_STATUS.DOING })}
+                        handleDelete={() => handleDeleteCard(card.id)} />
                 ))}
             </S.Column>
             <S.Column>
                 <S.Title>Doing</S.Title>
                 {cards.filter(card => card.lista === 'doing').map(card => (
-                    <Card key={card.id} {...card} handleClick={() => handleEditCard(card)} handleDelete={() => handleDeleteCard(card.id)} />
+                    <Card
+                        key={card.id}
+                        {...card}
+                        handleCompleteEdit={handleCompleteEdit}
+                        handleDelete={() => handleDeleteCard(card.id)}
+                        handleArrowLeft={() => handleChangeStatusCard({ ...card, lista: KANBAN_STATUS.TODO })}
+                        handleArrowRight={() => handleChangeStatusCard({ ...card, lista: KANBAN_STATUS.DONE })} />
                 ))}
-
             </S.Column>
             <S.Column>
                 <S.Title>Done</S.Title>
                 {cards.filter(card => card.lista === 'done').map(card => (
-                    <Card key={card.id} {...card} handleClick={() => handleEditCard(card)} handleDelete={() => handleDeleteCard(card.id)} />
+                    <Card
+                        key={card.id}
+                        {...card}
+                        handleCompleteEdit={handleCompleteEdit}
+                        handleDelete={() => handleDeleteCard(card.id)}
+                        handleArrowLeft={() => handleChangeStatusCard({ ...card, lista: KANBAN_STATUS.DOING })} />
                 ))}
-
             </S.Column>
-
-
-            <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                style={MODAL_STYLES}
-            >
-                <FormCard onComplete={closeModal}  {...selectedCard} />
-            </Modal>
 
         </S.Container>
     )

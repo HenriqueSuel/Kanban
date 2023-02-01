@@ -25,6 +25,7 @@ const useCardsStore = create<CardStates>()(
         },
         editCard: async (card: ICard) => {
             try {
+                console.log(card)
                 await putApi<ICard>(`/cards/${card.id}`, card);
                 toast.success('Card atualizado com sucesso!');
             } catch (error) {

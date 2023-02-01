@@ -16,8 +16,11 @@ export const ContainerButton = styled.div`
     display: flex;
     justify-content: center;
     padding-bottom: 16px;
+    margin-top: 30px;
+    align-items: center;
     button {
-        margin-right: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
         padding: 8px 20px;
         display: flex;
         align-items: center;
@@ -26,4 +29,8 @@ export const ContainerButton = styled.div`
             margin-left: 8px;
         }
     }
+`
+
+export const CursorPointer = styled.div`
+    cursor: pointer;
 `
