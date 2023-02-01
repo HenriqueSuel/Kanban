@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { FormCard } from '../FormCard';
 import { useCardsStore } from '@/stores/cards.zustand';
 import { MODAL_STYLES } from '@/constants/modal.constants';
+import { Button } from '@/styles/globals';
+import { COLORS } from '@/constants/theme.constants';
 
 const NavBar = () => {
     const { findCards } = useCardsStore();
@@ -18,16 +20,13 @@ const NavBar = () => {
     return (
         <S.Container>
             <S.Title>Kanban</S.Title>
-            <div>
-                <S.Button onClick={() => setIsOpen(true)}>Novo card</S.Button>
-            </div>
-
+            <Button color={COLORS.SUCCESS} onClick={() => setIsOpen(true)}>Novo card</Button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 style={MODAL_STYLES}
             >
-                <FormCard onComplete={closeModal}  />
+                <FormCard onComplete={closeModal} />
             </Modal>
         </S.Container>
     )

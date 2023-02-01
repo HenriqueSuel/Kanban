@@ -31,7 +31,7 @@ const Board = () => {
         <S.Container>
             <S.Column>
                 <S.Title>To Do</S.Title>
-                {cards.filter(card => card.lista === 'todo').map(card => (
+                {cards.filter(card => card.lista === KANBAN_STATUS.TODO).map(card => (
                     <Card
                         key={card.id}
                         {...card}
@@ -42,7 +42,7 @@ const Board = () => {
             </S.Column>
             <S.Column>
                 <S.Title>Doing</S.Title>
-                {cards.filter(card => card.lista === 'doing').map(card => (
+                {cards.filter(card => card.lista === KANBAN_STATUS.DOING).map(card => (
                     <Card
                         key={card.id}
                         {...card}
@@ -54,7 +54,7 @@ const Board = () => {
             </S.Column>
             <S.Column>
                 <S.Title>Done</S.Title>
-                {cards.filter(card => card.lista === 'done').map(card => (
+                {cards.filter(card => card.lista === KANBAN_STATUS.DONE).map(card => (
                     <Card
                         key={card.id}
                         {...card}

@@ -71,8 +71,6 @@ const Card = ({
                 </S.Container>
             )
     )
-
 }
-
 
 export { Card }
